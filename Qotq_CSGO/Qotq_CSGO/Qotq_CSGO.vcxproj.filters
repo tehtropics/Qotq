@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="SDK">
+      <UniqueIdentifier>{31dad56a-e0bd-4e86-a0af-5c14ea1b015d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{e19631c2-c249-4d34-b189-67abea46bab8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDK\Helpers">
+      <UniqueIdentifier>{b8fe041a-8019-42f5-9f7a-4c6abd85ec2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDK\Hooks">
+      <UniqueIdentifier>{73f48eff-d7d0-4d7d-a632-d3081533baea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDK\Valve">
+      <UniqueIdentifier>{3b08e67f-613d-4839-86ca-b96c7b2da19b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDK\Interfaces">
+      <UniqueIdentifier>{88bad269-2fe5-4e55-9b09-56481373b260}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDK\Math">
+      <UniqueIdentifier>{1ea8c18b-d218-424b-8e5d-fa82f5fa1cab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDK\Classes">
+      <UniqueIdentifier>{ccdd00a4-5e15-4665-b25a-3eccc6248706}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hacks">
+      <UniqueIdentifier>{f3d8b5fd-913b-40d0-ab88-d4aaa99baa18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hacks\Features">
+      <UniqueIdentifier>{6b2333c8-fd9a-47c0-9ff8-8927956c47f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hacks\Helpers">
+      <UniqueIdentifier>{73bd13b4-199f-4404-9cea-0ab12682c929}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hacks\Features\Visuals">
+      <UniqueIdentifier>{e79c29e8-2cba-47f5-aa18-ac682a16bd95}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="targetver.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="VFunc.h">
+      <Filter>SDK\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="VMT.h">
+      <Filter>SDK\Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
+      <Filter>SDK\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="IPanel.h">
+      <Filter>SDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Recv.h">
+      <Filter>SDK\Valve</Filter>
+    </ClInclude>
+    <ClInclude Include="IHandleEntity.h">
+      <Filter>SDK\Valve</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseHandle.h">
+      <Filter>SDK\Valve</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientClass.h">
+      <Filter>SDK\Valve</Filter>
+    </ClInclude>
+    <ClInclude Include="Enums.h">
+      <Filter>SDK\Valve</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>SDK\Valve</Filter>
+    </ClInclude>
+    <ClInclude Include="CUserCmd.h">
+      <Filter>SDK\Valve</Filter>
+    </ClInclude>
+    <ClInclude Include="CViewSetup.h">
+      <Filter>SDK\Valve</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalVars.h">
+      <Filter>SDK\Valve</Filter>
+    </ClInclude>
+    <ClInclude Include="IAppSystem.h">
+      <Filter>SDK\Valve</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector.h">
+      <Filter>SDK\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="VMatrix.h">
+      <Filter>SDK\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="QAngle.h">
+      <Filter>SDK\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2D.h">
+      <Filter>SDK\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector4D.h">
+      <Filter>SDK\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="IBaseClientDLL.h">
+      <Filter>SDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="INetChannelInfo.h">
+      <Filter>SDK\Valve</Filter>
+    </ClInclude>
+    <ClInclude Include="IVEngineClient.h">
+      <Filter>SDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ISurface.h">
+      <Filter>SDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IClientMode.h">
+      <Filter>SDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Hooks.h">
+      <Filter>SDK\Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="IConVar.h">
+      <Filter>SDK\Valve</Filter>
+    </ClInclude>
+    <ClInclude Include="ICvar.h">
+      <Filter>SDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="GlowObjectManager.h">
+      <Filter>SDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="CBaseEntity.h">
+      <Filter>SDK\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="CBaseWeapon.h">
+      <Filter>SDK\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Glow.h">
+      <Filter>Hacks\Features\Visuals</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Qotq_CSGO.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK.cpp">
+      <Filter>SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils.cpp">
+      <Filter>SDK\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="VMatrix.cpp">
+      <Filter>SDK\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2D.cpp">
+      <Filter>SDK\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector4D.cpp">
+      <Filter>SDK\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Hooks.cpp">
+      <Filter>SDK\Hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="Color.cpp">
+      <Filter>SDK\Valve</Filter>
+    </ClCompile>
+    <ClCompile Include="CBaseEntity.cpp">
+      <Filter>SDK\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="CBaseWeapon.cpp">
+      <Filter>SDK\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Glow.cpp">
+      <Filter>Hacks\Features\Visuals</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
