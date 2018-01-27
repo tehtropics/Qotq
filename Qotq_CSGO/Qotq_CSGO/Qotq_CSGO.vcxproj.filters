@@ -37,6 +37,18 @@
     <Filter Include="Hacks\Features\Visuals">
       <UniqueIdentifier>{e79c29e8-2cba-47f5-aa18-ac682a16bd95}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SDK\Netvars">
+      <UniqueIdentifier>{e3262c47-0dc3-4d87-951d-a1c3703076ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Imgui">
+      <UniqueIdentifier>{a1e0f260-56f3-47bf-b874-472be29f07ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Imgui\DX9">
+      <UniqueIdentifier>{2d52142f-69d3-4725-a9f9-bfd106c872fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Menu">
+      <UniqueIdentifier>{65c7a607-3a86-41c1-842b-a5ef8656364f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="targetver.h">
@@ -82,9 +94,6 @@
       <Filter>SDK\Valve</Filter>
     </ClInclude>
     <ClInclude Include="CViewSetup.h">
-      <Filter>SDK\Valve</Filter>
-    </ClInclude>
-    <ClInclude Include="GlobalVars.h">
       <Filter>SDK\Valve</Filter>
     </ClInclude>
     <ClInclude Include="IAppSystem.h">
@@ -141,6 +150,111 @@
     <ClInclude Include="Glow.h">
       <Filter>Hacks\Features\Visuals</Filter>
     </ClInclude>
+    <ClInclude Include="NetvarManager.h">
+      <Filter>SDK\Netvars</Filter>
+    </ClInclude>
+    <ClInclude Include="IClientEntityList.h">
+      <Filter>SDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawManager.h">
+      <Filter>SDK\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalVars.h">
+      <Filter>SDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IEngineTrace.h">
+      <Filter>SDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IVDebugOverlay.h">
+      <Filter>SDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="CInput.h">
+      <Filter>SDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="checksum_crc.h">
+      <Filter>SDK\Valve</Filter>
+    </ClInclude>
+    <ClInclude Include="checksum_md5.h">
+      <Filter>SDK\Valve</Filter>
+    </ClInclude>
+    <ClInclude Include="platform.h">
+      <Filter>SDK\Valve</Filter>
+    </ClInclude>
+    <ClInclude Include="UtlMemory.h">
+      <Filter>SDK\Valve</Filter>
+    </ClInclude>
+    <ClInclude Include="characterset.h">
+      <Filter>SDK\Valve</Filter>
+    </ClInclude>
+    <ClInclude Include="UtlBuffer.h">
+      <Filter>SDK\Valve</Filter>
+    </ClInclude>
+    <ClInclude Include="UtlString.h">
+      <Filter>SDK\Valve</Filter>
+    </ClInclude>
+    <ClInclude Include="UtlVector.h">
+      <Filter>SDK\Valve</Filter>
+    </ClInclude>
+    <ClInclude Include="datamap.h">
+      <Filter>SDK\Valve</Filter>
+    </ClInclude>
+    <ClInclude Include="IVModelInfoClient.h">
+      <Filter>SDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Studio.h">
+      <Filter>SDK\Valve</Filter>
+    </ClInclude>
+    <ClInclude Include="IVModelRender.h">
+      <Filter>SDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IRenderView.h">
+      <Filter>SDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IMaterialSystem.h">
+      <Filter>SDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IGameEventManager.h">
+      <Filter>SDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IMoveHelper.h">
+      <Filter>SDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IMDLCache.h">
+      <Filter>SDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IPrediction.h">
+      <Filter>SDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="CClientState.h">
+      <Filter>SDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IInputSystem.h">
+      <Filter>SDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\imconfig.h">
+      <Filter>Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\imgui.h">
+      <Filter>Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\imgui_internal.h">
+      <Filter>Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\stb_rect_pack.h">
+      <Filter>Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\stb_textedit.h">
+      <Filter>Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\stb_truetype.h">
+      <Filter>Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\DX9\imgui_impl_dx9.h">
+      <Filter>Imgui\DX9</Filter>
+    </ClInclude>
+    <ClInclude Include="ImMenu.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -181,6 +295,24 @@
     </ClCompile>
     <ClCompile Include="Glow.cpp">
       <Filter>Hacks\Features\Visuals</Filter>
+    </ClCompile>
+    <ClCompile Include="NetvarManager.cpp">
+      <Filter>SDK\Netvars</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawManager.cpp">
+      <Filter>SDK\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Imgui\imgui.cpp">
+      <Filter>Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Imgui\imgui_draw.cpp">
+      <Filter>Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Imgui\DX9\imgui_impl_dx9.cpp">
+      <Filter>Imgui\DX9</Filter>
+    </ClCompile>
+    <ClCompile Include="ImMenu.cpp">
+      <Filter>Menu</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

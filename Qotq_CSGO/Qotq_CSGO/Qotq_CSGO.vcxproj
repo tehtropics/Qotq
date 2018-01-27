@@ -73,6 +73,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <TargetName>plat</TargetName>
+    <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -80,6 +82,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <TargetName>plat</TargetName>
+    <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -148,10 +152,17 @@
     <ClInclude Include="BaseHandle.h" />
     <ClInclude Include="CBaseEntity.h" />
     <ClInclude Include="CBaseWeapon.h" />
+    <ClInclude Include="CClientState.h" />
+    <ClInclude Include="characterset.h" />
+    <ClInclude Include="checksum_crc.h" />
+    <ClInclude Include="checksum_md5.h" />
+    <ClInclude Include="CInput.h" />
     <ClInclude Include="ClientClass.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="CUserCmd.h" />
     <ClInclude Include="CViewSetup.h" />
+    <ClInclude Include="datamap.h" />
+    <ClInclude Include="DrawManager.h" />
     <ClInclude Include="Enums.h" />
     <ClInclude Include="GlobalVars.h" />
     <ClInclude Include="Glow.h" />
@@ -159,20 +170,47 @@
     <ClInclude Include="Hooks.h" />
     <ClInclude Include="IAppSystem.h" />
     <ClInclude Include="IBaseClientDLL.h" />
+    <ClInclude Include="IClientEntityList.h" />
     <ClInclude Include="IClientMode.h" />
     <ClInclude Include="IConVar.h" />
     <ClInclude Include="ICvar.h" />
+    <ClInclude Include="IEngineTrace.h" />
+    <ClInclude Include="IGameEventManager.h" />
     <ClInclude Include="IHandleEntity.h" />
+    <ClInclude Include="IInputSystem.h" />
+    <ClInclude Include="IMaterialSystem.h" />
+    <ClInclude Include="IMDLCache.h" />
+    <ClInclude Include="Imgui\DX9\imgui_impl_dx9.h" />
+    <ClInclude Include="Imgui\imconfig.h" />
+    <ClInclude Include="Imgui\imgui.h" />
+    <ClInclude Include="Imgui\imgui_internal.h" />
+    <ClInclude Include="Imgui\stb_rect_pack.h" />
+    <ClInclude Include="Imgui\stb_textedit.h" />
+    <ClInclude Include="Imgui\stb_truetype.h" />
+    <ClInclude Include="ImMenu.h" />
+    <ClInclude Include="IMoveHelper.h" />
     <ClInclude Include="INetChannelInfo.h" />
     <ClInclude Include="IPanel.h" />
+    <ClInclude Include="IPrediction.h" />
+    <ClInclude Include="IRenderView.h" />
     <ClInclude Include="ISurface.h" />
+    <ClInclude Include="IVDebugOverlay.h" />
     <ClInclude Include="IVEngineClient.h" />
+    <ClInclude Include="IVModelInfoClient.h" />
+    <ClInclude Include="IVModelRender.h" />
+    <ClInclude Include="NetvarManager.h" />
+    <ClInclude Include="platform.h" />
     <ClInclude Include="QAngle.h" />
     <ClInclude Include="Recv.h" />
     <ClInclude Include="SDK.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Studio.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Utils.h" />
+    <ClInclude Include="UtlBuffer.h" />
+    <ClInclude Include="UtlMemory.h" />
+    <ClInclude Include="UtlString.h" />
+    <ClInclude Include="UtlVector.h" />
     <ClInclude Include="Vector.h" />
     <ClInclude Include="Vector2D.h" />
     <ClInclude Include="Vector4D.h" />
@@ -185,8 +223,14 @@
     <ClCompile Include="CBaseWeapon.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="DrawManager.cpp" />
     <ClCompile Include="Glow.cpp" />
     <ClCompile Include="Hooks.cpp" />
+    <ClCompile Include="Imgui\DX9\imgui_impl_dx9.cpp" />
+    <ClCompile Include="Imgui\imgui.cpp" />
+    <ClCompile Include="Imgui\imgui_draw.cpp" />
+    <ClCompile Include="ImMenu.cpp" />
+    <ClCompile Include="NetvarManager.cpp" />
     <ClCompile Include="Qotq_CSGO.cpp" />
     <ClCompile Include="SDK.cpp" />
     <ClCompile Include="stdafx.cpp">
