@@ -5,11 +5,11 @@ Written in one night, you can find some mistakes
 
 ## SDK Features:
 
--Pasted NetvarManager
--ISurface DrawManager
--Implemented ImGui
--InterfaceScanner
--Almost all of the interfaces and classes which you will require to develop a full featured cheat
+- Pasted NetvarManager
+- ISurface DrawManager
+- Implemented ImGui
+- InterfaceScanner
+- Almost all of the interfaces and classes which you will require to develop a full featured cheat
 
 ## Hooks:
 ```
