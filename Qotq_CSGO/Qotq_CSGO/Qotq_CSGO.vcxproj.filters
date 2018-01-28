@@ -255,6 +255,36 @@
     <ClInclude Include="ImMenu.h">
       <Filter>Menu</Filter>
     </ClInclude>
+    <ClInclude Include="Convar.h">
+      <Filter>SDK\Valve</Filter>
+    </ClInclude>
+    <ClInclude Include="ICollideable.h">
+      <Filter>SDK\Valve</Filter>
+    </ClInclude>
+    <ClInclude Include="IClientNetworkable.h">
+      <Filter>SDK\Valve</Filter>
+    </ClInclude>
+    <ClInclude Include="IClientRenderable.h">
+      <Filter>SDK\Valve</Filter>
+    </ClInclude>
+    <ClInclude Include="IClientThinkable.h">
+      <Filter>SDK\Valve</Filter>
+    </ClInclude>
+    <ClInclude Include="IClientUnknown.h">
+      <Filter>SDK\Valve</Filter>
+    </ClInclude>
+    <ClInclude Include="IClientEntity.h">
+      <Filter>SDK\Valve</Filter>
+    </ClInclude>
+    <ClInclude Include="Math.h">
+      <Filter>SDK\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="ESP.h">
+      <Filter>Hacks\Features\Visuals</Filter>
+    </ClInclude>
+    <ClInclude Include="Settings.h">
+      <Filter>SDK\Helpers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -313,6 +343,30 @@
     </ClCompile>
     <ClCompile Include="ImMenu.cpp">
       <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="characterset.cpp">
+      <Filter>SDK\Valve</Filter>
+    </ClCompile>
+    <ClCompile Include="checksum_crc.cpp">
+      <Filter>SDK\Valve</Filter>
+    </ClCompile>
+    <ClCompile Include="checksum_md5.cpp">
+      <Filter>SDK\Valve</Filter>
+    </ClCompile>
+    <ClCompile Include="UtlBuffer.cpp">
+      <Filter>SDK\Valve</Filter>
+    </ClCompile>
+    <ClCompile Include="UtlString.cpp">
+      <Filter>SDK\Valve</Filter>
+    </ClCompile>
+    <ClCompile Include="Convar.cpp">
+      <Filter>SDK\Valve</Filter>
+    </ClCompile>
+    <ClCompile Include="Math.cpp">
+      <Filter>SDK\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="ESP.cpp">
+      <Filter>Hacks\Features\Visuals</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

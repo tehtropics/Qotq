@@ -7,6 +7,7 @@ CUtils* g_pUtils;
 CGlow* g_pGlow;
 CGlowObjectManager* g_pGlowObjectManager;
 CSDK* g_pSDK;
+CESP* g_pESP;
 DrawManager* Draw;
 vgui::HFont F_Arial;
 vgui::HFont F_ESP;
@@ -15,6 +16,7 @@ COffsets g_Offsets;
 bool pressedKey[256] = {};
 bool menuOpen = true;
 bool ImMenu::D3Init;
+SSettings g_Settings;
 
 IBaseClientDLL* g_pCHLClient = nullptr;
 IClientMode* g_pClientMode = nullptr;
@@ -189,10 +191,51 @@ void InstallQotq(void)
 	// Netvars.
 	//-----------------------------------------------------------------------------
 
-
+	//pasted from my old paste which i pasted from somewhere, dont remember.
 	g_Offsets.NetVars = std::shared_ptr<CNetVars>(new CNetVars());
-	g_Offsets.NetVars->GetOffset("DT_BasePlayer","m_iTeamNum", &NetVars.m_iTeamNum);
-	g_Offsets.NetVars->GetOffset("DT_BasePlayer", "m_iHealth", &NetVars.m_iHealth);
+	g_Offsets.NetVars->GetOffset(("DT_BaseEntity"), ("m_CollisionGroup"), &NetVars.m_rgflCoordinateFrame, -0x30);
+	g_Offsets.NetVars->GetOffset(("DT_BaseEntity"), ("m_Collision"), &NetVars.m_Collision);
+	g_Offsets.NetVars->GetOffset(("DT_BaseEntity"), ("m_vecOrigin"), &NetVars.m_vecOrigin);
+	g_Offsets.NetVars->GetOffset(("DT_BaseEntity"), ("m_iTeamNum"), &NetVars.m_iTeamNum);
+	g_Offsets.NetVars->GetOffset(("DT_BasePlayer"), ("m_aimPunchAngle"), &NetVars.m_vecPunchAngles);
+	g_Offsets.NetVars->GetOffset(("DT_BasePlayer"), ("m_viewPunchAngle"), &NetVars.m_vecViewPunchAngles);
+	g_Offsets.NetVars->GetOffset(("DT_CSPlayer"), ("m_vecViewOffset[0]"), &NetVars.m_vecViewOffset);
+	g_Offsets.NetVars->GetOffset(("DT_CSPlayer"), ("m_ArmorValue"), &NetVars.m_ArmorValue);
+	g_Offsets.NetVars->GetOffset(("DT_BasePlayer"), ("m_vecVelocity[0]"), &NetVars.m_vecVelocity);
+	g_Offsets.NetVars->GetOffset(("DT_BasePlayer"), ("m_lifeState"), &NetVars.m_lifeState);
+	g_Offsets.NetVars->GetOffset(("DT_BasePlayer"), ("m_fFlags"), &NetVars.m_fFlags);
+	g_Offsets.NetVars->GetOffset(("DT_BasePlayer"), ("m_iHealth"), &NetVars.m_iHealth);
+	g_Offsets.NetVars->GetOffset(("DT_BasePlayer"), ("m_hActiveWeapon"), &NetVars.m_hActiveWeapon);
+	g_Offsets.NetVars->GetOffset(("DT_BasePlayer"), ("m_hMyWeapons"), &NetVars.m_hMyWeapons);
+	g_Offsets.NetVars->GetOffset(("DT_BasePlayer"), ("m_hViewModel[0]"), &NetVars.m_hViewModel);
+	g_Offsets.NetVars->GetOffset(("DT_BasePlayer"), ("m_nTickBase"), &NetVars.m_nTickBase);
+	g_Offsets.NetVars->GetOffset(("DT_BasePlayer"), ("m_hObserverTarget"), &NetVars.m_hObserverTarget);
+	g_Offsets.NetVars->GetOffset(("DT_BasePlayer"), ("m_flSimulationTime"), &NetVars.m_flSimulationTime);
+	g_Offsets.NetVars->GetOffset(("DT_BaseAttributableItem"), ("m_iAccountID"), &NetVars.m_iAccountID);
+	g_Offsets.NetVars->GetOffset(("DT_BaseAttributableItem"), ("m_iItemDefinitionIndex"), &NetVars.m_iItemDefinitionIndex);
+	g_Offsets.NetVars->GetOffset(("DT_BaseAttributableItem"), ("m_iItemIDHigh"), &NetVars.m_iItemIDHigh);
+	g_Offsets.NetVars->GetOffset(("DT_BaseAttributableItem"), ("m_iEntityQuality"), &NetVars.m_iEntityQuality);
+	g_Offsets.NetVars->GetOffset(("DT_BaseAttributableItem"), ("m_szCustomName"), &NetVars.m_szCustomName);
+	g_Offsets.NetVars->GetOffset(("DT_BaseAttributableItem"), ("m_nFallbackPaintKit"), &NetVars.m_nFallbackPaintKit);
+	g_Offsets.NetVars->GetOffset(("DT_BaseAttributableItem"), ("m_flFallbackWear"), &NetVars.m_flFallbackWear);
+	g_Offsets.NetVars->GetOffset(("DT_BaseAttributableItem"), ("m_nFallbackSeed"), &NetVars.m_nFallbackSeed);
+	g_Offsets.NetVars->GetOffset(("DT_BaseAttributableItem"), ("m_nFallbackStatTrak"), &NetVars.m_nFallbackStatTrak);
+	g_Offsets.NetVars->GetOffset(("DT_BaseAttributableItem"), ("m_OriginalOwnerXuidLow"), &NetVars.m_OriginalOwnerXuidLow);
+	g_Offsets.NetVars->GetOffset(("DT_BaseAttributableItem"), ("m_OriginalOwnerXuidHigh"), &NetVars.m_OriginalOwnerXuidHigh);
+	g_Offsets.NetVars->GetOffset(("DT_BaseViewModel"), ("m_nModelIndex"), &NetVars.m_nModelIndex);
+	g_Offsets.NetVars->GetOffset(("DT_BaseViewModel"), ("m_hOwner"), &NetVars.m_hOwner);
+	g_Offsets.NetVars->GetOffset(("DT_BaseViewModel"), ("m_hWeapon"), &NetVars.m_hWeapon);
+	g_Offsets.NetVars->GetOffset(("DT_BaseCombatWeapon"), ("m_flNextPrimaryAttack"), &NetVars.m_flNextPrimaryAttack);
+	g_Offsets.NetVars->GetOffset(("DT_BaseCombatWeapon"), ("m_flNextSecondaryAttack"), &NetVars.m_flNextSecondaryAttack);
+	g_Offsets.NetVars->GetOffset(("DT_BaseCombatWeapon"), ("m_iClip1"), &NetVars.m_iClip1);
+	g_Offsets.NetVars->GetOffset(("DT_BaseCombatWeapon"), ("m_iPrimaryReserveAmmoCount"), &NetVars.m_iClip2);
+	g_Offsets.NetVars->GetOffset(("DT_CSPlayer"), ("m_bIsScoped"), &NetVars.m_bIsScoped);
+	g_Offsets.NetVars->GetOffset(("DT_CSPlayer"), ("m_iShotsFired"), &NetVars.m_iShotsFired);
+	g_Offsets.NetVars->GetOffset(("DT_CSPlayer"), ("m_flFlashMaxAlpha"), &NetVars.m_flFlashMaxAlpha);
+	g_Offsets.NetVars->GetOffset(("DT_CSPlayer"), ("m_hMyWearables"), &NetVars.m_hMyWearables);
+	g_Offsets.NetVars->GetOffset(("DT_PlantedC4"), ("m_flC4Blow"), &NetVars.m_flC4Blow);
+	g_Offsets.NetVars->GetOffset(("DT_PlantedC4"), ("m_flTimerLength"), &NetVars.m_flTimerLength);
+	g_Offsets.NetVars->GetOffset(("DT_CSPlayer"), ("m_flLowerBodyYawTarget"), &NetVars.m_flLowerBodyYawTarget);
 }
 
 

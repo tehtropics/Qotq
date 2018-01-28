@@ -159,19 +159,27 @@
     <ClInclude Include="CInput.h" />
     <ClInclude Include="ClientClass.h" />
     <ClInclude Include="Color.h" />
+    <ClInclude Include="Convar.h" />
     <ClInclude Include="CUserCmd.h" />
     <ClInclude Include="CViewSetup.h" />
     <ClInclude Include="datamap.h" />
     <ClInclude Include="DrawManager.h" />
     <ClInclude Include="Enums.h" />
+    <ClInclude Include="ESP.h" />
     <ClInclude Include="GlobalVars.h" />
     <ClInclude Include="Glow.h" />
     <ClInclude Include="GlowObjectManager.h" />
     <ClInclude Include="Hooks.h" />
     <ClInclude Include="IAppSystem.h" />
     <ClInclude Include="IBaseClientDLL.h" />
+    <ClInclude Include="IClientEntity.h" />
     <ClInclude Include="IClientEntityList.h" />
     <ClInclude Include="IClientMode.h" />
+    <ClInclude Include="IClientNetworkable.h" />
+    <ClInclude Include="IClientRenderable.h" />
+    <ClInclude Include="IClientThinkable.h" />
+    <ClInclude Include="IClientUnknown.h" />
+    <ClInclude Include="ICollideable.h" />
     <ClInclude Include="IConVar.h" />
     <ClInclude Include="ICvar.h" />
     <ClInclude Include="IEngineTrace.h" />
@@ -198,11 +206,13 @@
     <ClInclude Include="IVEngineClient.h" />
     <ClInclude Include="IVModelInfoClient.h" />
     <ClInclude Include="IVModelRender.h" />
+    <ClInclude Include="Math.h" />
     <ClInclude Include="NetvarManager.h" />
     <ClInclude Include="platform.h" />
     <ClInclude Include="QAngle.h" />
     <ClInclude Include="Recv.h" />
     <ClInclude Include="SDK.h" />
+    <ClInclude Include="Settings.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Studio.h" />
     <ClInclude Include="targetver.h" />
@@ -221,15 +231,21 @@
   <ItemGroup>
     <ClCompile Include="CBaseEntity.cpp" />
     <ClCompile Include="CBaseWeapon.cpp" />
+    <ClCompile Include="characterset.cpp" />
+    <ClCompile Include="checksum_crc.cpp" />
+    <ClCompile Include="checksum_md5.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="DrawManager.cpp" />
+    <ClCompile Include="ESP.cpp" />
     <ClCompile Include="Glow.cpp" />
     <ClCompile Include="Hooks.cpp" />
+    <ClCompile Include="Convar.cpp" />
     <ClCompile Include="Imgui\DX9\imgui_impl_dx9.cpp" />
     <ClCompile Include="Imgui\imgui.cpp" />
     <ClCompile Include="Imgui\imgui_draw.cpp" />
     <ClCompile Include="ImMenu.cpp" />
+    <ClCompile Include="Math.cpp" />
     <ClCompile Include="NetvarManager.cpp" />
     <ClCompile Include="Qotq_CSGO.cpp" />
     <ClCompile Include="SDK.cpp" />
@@ -240,6 +256,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Utils.cpp" />
+    <ClCompile Include="UtlBuffer.cpp" />
+    <ClCompile Include="UtlString.cpp" />
     <ClCompile Include="Vector2D.cpp" />
     <ClCompile Include="Vector4D.cpp" />
     <ClCompile Include="VMatrix.cpp" />

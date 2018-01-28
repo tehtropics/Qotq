@@ -39,7 +39,7 @@ void __fastcall  Hooks::PaintTraverseHook(void *thisptr, void * _EDX,vgui::VPANE
 		Draw->String(F_Arial, false, 5, 3, Color(255, 255, 255, 255), "Qotq Cheetos");
 		Draw->String(F_Arial, false, 5, 18, Color(255, 0, 0, 255), "Built: %s %s", __TIME__, __DATE__);
 		if (local) {
-
+			g_pESP->Start();
 		}
 		//do visuals here
 	}

@@ -215,7 +215,7 @@ public:
 	}
 	bool ShouldHitEntity(C_BaseEntity* pEntityHandle, int /*contentsMask*/)
 	{
-		//return pEntityHandle != pEnt && pEntityHandle->IsPlayer();
+		//return pEntityHandle != pEnt && pEntityHandle->IsPlayer(); //lil anti paste :)
 		return true;
 	}
 	virtual TraceType GetTraceType() const

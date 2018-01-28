@@ -1,5 +1,30 @@
 #pragma once
+
+
+
+//-----------------------------------------------------------------------------
+// Qotq SDK.
+// Written by wiotq. https://github.com/wiotq
+// Credits:
+// -klmno
+// -pazzo
+// -MarkHC
+// -n0xius
+// -XxharCs
+// -Fluc
+// -Jake
+// -UC Community
+//-----------------------------------------------------------------------------
+
+
+
+
+
+
+
 //include standard libraries
+
+
 #include <windows.h>
 #include <SDKDDKVer.h>
 #include <string.h>
@@ -47,6 +72,7 @@
 
 //forward declaration
 class C_BaseEntity;
+class C_BaseWeapon;
 
 //valve(interfaces/classes/rest shit)
 #include "Imgui\imgui.h"
@@ -74,6 +100,7 @@ class C_BaseEntity;
 #include "Vector2D.h"
 #include "Vector4D.h"
 #include "VMatrix.h"
+#include "Math.h"
 #include "INetChannelInfo.h"
 #include "IConVar.h"
 #include "GlowObjectManager.h"
@@ -81,8 +108,17 @@ class C_BaseEntity;
 #include "UtlMemory.h"
 #include "UtlString.h"
 #include "UtlVector.h"
+#include "Convar.h"
 #include "Studio.h"
+#include "ICollideable.h"
+#include "IClientNetworkable.h"
+#include "IClientRenderable.h"
+#include "IClientThinkable.h"
+#include "IClientUnknown.h"
+#include "IClientEntity.h"
 #include "CBaseEntity.h"
+#include "CBaseWeapon.h"
+
 
 
 
@@ -113,6 +149,7 @@ extern WNDPROC oldWindowProc;
 extern HWND m_hwndWindow;
 extern bool pressedKey[256];
 extern bool menuOpen;
+#include "Settings.h"
 #include "ImMenu.h"
 #include "DrawManager.h"
 
@@ -121,6 +158,7 @@ extern bool menuOpen;
 
 //features includes
 #include "Glow.h"
+#include "ESP.h"
 
 
 
@@ -197,3 +235,5 @@ class COffsets
 public:
 	std::shared_ptr<CNetVars> NetVars = nullptr;
 }; extern COffsets g_Offsets;
+
+

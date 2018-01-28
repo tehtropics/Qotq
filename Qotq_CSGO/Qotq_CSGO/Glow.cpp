@@ -13,7 +13,7 @@ void CGlow::Start() {
 		ClientClass* EntityClass = (ClientClass*)Entity->GetClientClass();
 		if (EntityClass->m_ClassID == ClassId_CCSPlayer) {
 			Color cglow;
-			cglow = Entity->Team() == local->Team() ? Color(0, 255, 0, 255) : Color(255, 0, 0, 255);
+			cglow = Entity->GetTeam() == local->GetTeam() ? Color(0, 255, 0, 180) : Color(255, 0, 0, 180);
 			glowEntity->set(cglow);
 		}
 	}
