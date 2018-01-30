@@ -27,7 +27,7 @@ DrawModelExecute
 
 ## Screen
 
-![My image](https://i.imgur.com/X3mMec8.png)
+![My image](https://i.imgur.com/xgfEjHo.jpg)
 
 ## Credits:
 
