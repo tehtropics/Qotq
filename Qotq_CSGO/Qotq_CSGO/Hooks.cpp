@@ -35,9 +35,11 @@ void __fastcall  Hooks::PaintTraverseHook(void *thisptr, void * _EDX,vgui::VPANE
 	if (FocusOverlayPanel == panel)
 	{
 		auto local = g_pEntityList->GetClientEntity(g_pEngine->GetLocalPlayer());
-
+		time_t _tm = time(NULL);
+		struct tm * curtime = localtime(&_tm);
+		std::string timee = asctime(curtime);
 		Draw->String(F_Arial, false, 5, 3, Color(255, 255, 255, 255), "Qotq Cheetos");
-		Draw->String(F_Arial, false, 5, 18, Color(255, 0, 0, 255), "Built: %s %s", __TIME__, __DATE__);
+		Draw->String(F_Arial, false, 5, 18, Color(255, 0, 0, 255), timee.c_str());
 		if (local) {
 			g_pESP->Start();
 		}
@@ -48,8 +50,11 @@ void __fastcall  Hooks::PaintTraverseHook(void *thisptr, void * _EDX,vgui::VPANE
 }
 
 bool __stdcall Hooks::CreateMoveHook(float flInputSampleTime, CUserCmd* cmd) {
-
+	C_BaseEntity* localplayer = g_pEntityList->GetClientEntity(g_pEngine->GetLocalPlayer());
+	if (!cmd->command_number || !g_pEngine->IsConnected() && !g_pEngine->IsInGame() || !localplayer) 
 	return oCreateMove(flInputSampleTime, cmd);
+	if(g_Settings.misc.bhop) g_pMovement->Bhop(localplayer, cmd);
+	return false;
 }
 
 int  __fastcall Hooks::DoPostScreenEffectsHook(void *thisptr, void * _EDX,int a1) {
@@ -68,6 +73,7 @@ void __stdcall Hooks::FrameStageNotifyHook(ClientFrameStage_t stage) {
 
 void __fastcall Hooks::SceneEndHook(void* thisptr, void* edx) {
 	return oSceneEnd(thisptr);
+	if (g_Settings.visuals.chams) g_pChams->Start();
  }
 bool __fastcall Hooks::WriteUsercmdDeltaToBufferHook(IBaseClientDLL* this0, void * _EDX, int nSlot, void* buf, int from, int to, bool isNewCmd) {
 	return true;

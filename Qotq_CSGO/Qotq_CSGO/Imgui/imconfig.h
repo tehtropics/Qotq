@@ -22,7 +22,7 @@
 
 //---- Don't implement test window functionality (ShowTestWindow()/ShowStyleEditor()/ShowUserGuide() methods will be empty)
 //---- It is very strongly recommended to NOT disable the test windows. Please read the comment at the top of imgui_demo.cpp to learn why.
-#define IMGUI_DISABLE_TEST_WINDOWS
+//#define IMGUI_DISABLE_TEST_WINDOWS
 
 //---- Don't define obsolete functions names. Consider enabling from time to time or when updating to reduce like hood of using already obsolete function/names
 //#define IMGUI_DISABLE_OBSOLETE_FUNCTIONS
@@ -43,6 +43,7 @@
         ImVec4(const MyVec4& f) { x = f.x; y = f.y; z = f.z; w = f.w; }     \
         operator MyVec4() const { return MyVec4(x,y,z,w); }
 */
+
 //---- Use 32-bit vertex indices (instead of default: 16-bit) to allow meshes with more than 64K vertices
 //#define ImDrawIdx unsigned int
 

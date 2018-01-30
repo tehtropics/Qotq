@@ -49,6 +49,9 @@
     <Filter Include="Menu">
       <UniqueIdentifier>{65c7a607-3a86-41c1-842b-a5ef8656364f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Hacks\Features\Misc">
+      <UniqueIdentifier>{9128b40b-3c6a-4665-9d87-021a6f2a59d5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="targetver.h">
@@ -285,6 +288,12 @@
     <ClInclude Include="Settings.h">
       <Filter>SDK\Helpers</Filter>
     </ClInclude>
+    <ClInclude Include="Movement.h">
+      <Filter>Hacks\Features\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Chamss.h">
+      <Filter>Hacks\Features\Visuals</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -366,6 +375,12 @@
       <Filter>SDK\Math</Filter>
     </ClCompile>
     <ClCompile Include="ESP.cpp">
+      <Filter>Hacks\Features\Visuals</Filter>
+    </ClCompile>
+    <ClCompile Include="Movement.cpp">
+      <Filter>Hacks\Features\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="Chamss.cpp">
       <Filter>Hacks\Features\Visuals</Filter>
     </ClCompile>
   </ItemGroup>

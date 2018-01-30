@@ -47,9 +47,6 @@ bool C_BaseWeapon::IsGun() {
 		case WEAPON_NEGEV:
 		case WEAPON_SAWEDOFF:
 		case WEAPON_TEC9:
-			return true;
-		case WEAPON_TASER:
-			return false;
 		case WEAPON_HKP2000:
 		case WEAPON_MP7:
 		case WEAPON_MP9:
@@ -58,41 +55,11 @@ bool C_BaseWeapon::IsGun() {
 		case WEAPON_SCAR20:
 		case WEAPON_SG556:
 		case WEAPON_SSG08:
-			return true;
-		case WEAPON_KNIFE:
-		case WEAPON_FLASHBANG:
-		case WEAPON_HEGRENADE:
-		case WEAPON_SMOKEGRENADE:
-		case WEAPON_MOLOTOV:
-		case WEAPON_DECOY:
-		case WEAPON_INCGRENADE:
-		case WEAPON_C4:
-		case WEAPON_KNIFE_T:
-			return false;
 		case WEAPON_M4A1_SILENCER:
 		case WEAPON_USP_SILENCER:
 		case WEAPON_CZ75A:
 		case WEAPON_REVOLVER:
 			return true;
-		case WEAPON_BAYONET:
-		case WEAPON_KNIFE_FLIP:
-		case WEAPON_KNIFE_GUT:
-		case WEAPON_KNIFE_KARAMBIT:
-		case WEAPON_KNIFE_M9_BAYONET:
-		case WEAPON_KNIFE_TACTICAL:
-		case WEAPON_KNIFE_FALCHION:
-		case WEAPON_KNIFE_SURVIVAL_BOWIE:
-		case WEAPON_KNIFE_BUTTERFLY:
-		case WEAPON_KNIFE_PUSH:
-		case GLOVE_STUDDED_BLOODHOUND:
-		case GLOVE_T_SIDE:
-		case GLOVE_CT_SIDE:
-		case GLOVE_SPORTY:
-		case GLOVE_SLICK:
-		case GLOVE_LEATHER_WRAP:
-		case GLOVE_MOTORCYCLE:
-		case GLOVE_SPECIALIST:
-			return false;
 		default:
 			return false;
 	}
@@ -107,10 +74,6 @@ int C_BaseWeapon::GetXUIDHigh() {
 }
 int C_BaseWeapon::GetEntityQuality() {
 	return *reinterpret_cast<int*>((uintptr_t)this + NetVars.m_iEntityQuality);
-
-}
-int C_BaseWeapon::GetAccountID() {
-	return *reinterpret_cast<int*>((uintptr_t)this + NetVars.m_iAccountID);
 
 }
 int C_BaseWeapon::GetItemIDHigh() {

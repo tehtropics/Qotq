@@ -8,6 +8,8 @@ CGlow* g_pGlow;
 CGlowObjectManager* g_pGlowObjectManager;
 CSDK* g_pSDK;
 CESP* g_pESP;
+CMovement* g_pMovement;
+CChamss* g_pChams;
 DrawManager* Draw;
 vgui::HFont F_Arial;
 vgui::HFont F_ESP;
@@ -17,6 +19,7 @@ bool pressedKey[256] = {};
 bool menuOpen = true;
 bool ImMenu::D3Init;
 SSettings g_Settings;
+
 
 IBaseClientDLL* g_pCHLClient = nullptr;
 IClientMode* g_pClientMode = nullptr;
@@ -148,40 +151,7 @@ void InstallQotq(void)
 	g_pUtils->Print("IDirect3DDevice9 -> 0x%x", D3DDevice9);
 	g_pUtils->Print("-------------------------------------------------------------------------------");
 
-	//-----------------------------------------------------------------------------
-	// Hooking.
-	//-----------------------------------------------------------------------------
 
-	oldWindowProc = (WNDPROC)SetWindowLongPtr(m_hwndWindow, GWLP_WNDPROC, (LONG_PTR)Hooks::WndProcHook);
-
-	g_pUtils->Print("Hooking:");
-	CVMTHookManager* VGuiHook = new CVMTHookManager((PDWORD*)g_pVGuiPanel);
-	oPaintTraverse = (PaintTraverse)(VGuiHook->HookMethod((DWORD)Hooks::PaintTraverseHook, 41));
-	g_pUtils->Print("PaintTraverse(41) -> 0x%x", oPaintTraverse);
-	CVMTHookManager* ClientModeHook = new CVMTHookManager((PDWORD*)g_pClientMode);
-	oCreateMove = (CreateMove)(ClientModeHook->HookMethod((DWORD)Hooks::CreateMoveHook, 24));
-	g_pUtils->Print("CreateMove(24) -> 0x%x", oCreateMove);
-	oDoPostScreenEffects = (DoPostScreenEffects)(ClientModeHook->HookMethod((DWORD)Hooks::DoPostScreenEffectsHook, 44));
-	g_pUtils->Print("DoPostScreenEffects(44) -> 0x%x", oDoPostScreenEffects);
-	oOverrideView = (OverrideView)(ClientModeHook->HookMethod((DWORD)Hooks::OverrideViewHook, 18));
-	g_pUtils->Print("OverrideView(18) -> 0x%x", oOverrideView);
-	CVMTHookManager* ClientHook = new CVMTHookManager((PDWORD*)g_pCHLClient);
-	oFrameStageNotify = (FrameStageNotify)(ClientHook->HookMethod((DWORD)Hooks::FrameStageNotifyHook, 36));
-	g_pUtils->Print("FrameStageNotify(36) -> 0x%x", oFrameStageNotify);
-	CVMTHookManager* SurfaceHook = new CVMTHookManager((PDWORD*)g_pVGuiSurface);
-	oPlaySound = (PlaySoundT)(SurfaceHook->HookMethod((DWORD)Hooks::PlaySoundHook, 82));
-	g_pUtils->Print("PlaySound(82) -> 0x%x", oPlaySound);
-	CVMTHookManager* RenderViewHook = new CVMTHookManager((PDWORD*)g_pRenderView);
-	oSceneEnd = (SceneEnd)(RenderViewHook->HookMethod((DWORD)Hooks::SceneEndHook, 9));
-	g_pUtils->Print("SceneEnd(9) -> 0x%x", oSceneEnd);
-	CVMTHookManager* D3DDevHook = new CVMTHookManager((PDWORD*)D3DDevice9);
-	oEndScene = (EndScene)(D3DDevHook->HookMethod((DWORD)Hooks::EndSceneHook, 42));
-	g_pUtils->Print("EndScene(42) -> 0x%x", oEndScene);
-	oReset = (Reset)(D3DDevHook->HookMethod((DWORD)Hooks::ResetHook, 16));
-	g_pUtils->Print("Reset(16) -> 0x%x", oReset);
-	CVMTHookManager* MdlRenderHook = new CVMTHookManager((PDWORD*)g_pMdlRender);
-	oDrawModelExecute = (DrawModelExecute)(MdlRenderHook->HookMethod((DWORD)Hooks::DrawModelExecuteHook, 21));
-	g_pUtils->Print("DrawModelExecute(21) -> 0x%x", oDrawModelExecute);
 
 	g_pUtils->Print("-------------------------------------------------------------------------------");
 	g_pUtils->Print("Dumping Netvars:");
@@ -236,6 +206,41 @@ void InstallQotq(void)
 	g_Offsets.NetVars->GetOffset(("DT_PlantedC4"), ("m_flC4Blow"), &NetVars.m_flC4Blow);
 	g_Offsets.NetVars->GetOffset(("DT_PlantedC4"), ("m_flTimerLength"), &NetVars.m_flTimerLength);
 	g_Offsets.NetVars->GetOffset(("DT_CSPlayer"), ("m_flLowerBodyYawTarget"), &NetVars.m_flLowerBodyYawTarget);
+	std::this_thread::sleep_for(std::chrono::milliseconds(500));
+	//-----------------------------------------------------------------------------
+	// Hooking.
+	//-----------------------------------------------------------------------------
+
+	oldWindowProc = (WNDPROC)SetWindowLongPtr(m_hwndWindow, GWLP_WNDPROC, (LONG_PTR)Hooks::WndProcHook);
+
+	g_pUtils->Print("Hooking:");
+	CVMTHookManager* VGuiHook = new CVMTHookManager((PDWORD*)g_pVGuiPanel);
+	oPaintTraverse = (PaintTraverse)(VGuiHook->HookMethod((DWORD)Hooks::PaintTraverseHook, 41));
+	g_pUtils->Print("PaintTraverse(41) -> 0x%x", oPaintTraverse);
+	CVMTHookManager* ClientModeHook = new CVMTHookManager((PDWORD*)g_pClientMode);
+	oCreateMove = (CreateMove)(ClientModeHook->HookMethod((DWORD)Hooks::CreateMoveHook, 24));
+	g_pUtils->Print("CreateMove(24) -> 0x%x", oCreateMove);
+	oDoPostScreenEffects = (DoPostScreenEffects)(ClientModeHook->HookMethod((DWORD)Hooks::DoPostScreenEffectsHook, 44));
+	g_pUtils->Print("DoPostScreenEffects(44) -> 0x%x", oDoPostScreenEffects);
+	oOverrideView = (OverrideView)(ClientModeHook->HookMethod((DWORD)Hooks::OverrideViewHook, 18));
+	g_pUtils->Print("OverrideView(18) -> 0x%x", oOverrideView);
+	CVMTHookManager* ClientHook = new CVMTHookManager((PDWORD*)g_pCHLClient);
+	oFrameStageNotify = (FrameStageNotify)(ClientHook->HookMethod((DWORD)Hooks::FrameStageNotifyHook, 36));
+	g_pUtils->Print("FrameStageNotify(36) -> 0x%x", oFrameStageNotify);
+	CVMTHookManager* SurfaceHook = new CVMTHookManager((PDWORD*)g_pVGuiSurface);
+	oPlaySound = (PlaySoundT)(SurfaceHook->HookMethod((DWORD)Hooks::PlaySoundHook, 82));
+	g_pUtils->Print("PlaySound(82) -> 0x%x", oPlaySound);
+	CVMTHookManager* RenderViewHook = new CVMTHookManager((PDWORD*)g_pRenderView);
+	oSceneEnd = (SceneEnd)(RenderViewHook->HookMethod((DWORD)Hooks::SceneEndHook, 9));
+	g_pUtils->Print("SceneEnd(9) -> 0x%x", oSceneEnd);
+	CVMTHookManager* D3DDevHook = new CVMTHookManager((PDWORD*)D3DDevice9);
+	oEndScene = (EndScene)(D3DDevHook->HookMethod((DWORD)Hooks::EndSceneHook, 42));
+	g_pUtils->Print("EndScene(42) -> 0x%x", oEndScene);
+	oReset = (Reset)(D3DDevHook->HookMethod((DWORD)Hooks::ResetHook, 16));
+	g_pUtils->Print("Reset(16) -> 0x%x", oReset);
+	CVMTHookManager* MdlRenderHook = new CVMTHookManager((PDWORD*)g_pMdlRender);
+	oDrawModelExecute = (DrawModelExecute)(MdlRenderHook->HookMethod((DWORD)Hooks::DrawModelExecuteHook, 21));
+	g_pUtils->Print("DrawModelExecute(21) -> 0x%x", oDrawModelExecute);
 }
 
 

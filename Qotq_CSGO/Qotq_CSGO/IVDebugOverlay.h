@@ -29,4 +29,8 @@ public:
 	virtual void            AddBoxOverlay2(const Vector& origin, const Vector& mins, const Vector& max, QAngle const& orientation, const uint8_t* faceColor, const uint8_t* edgeColor, float duration) = 0;
 	virtual void            PurgeTextOverlays() = 0;
 	virtual void            DrawPill(const Vector& mins, const Vector& max, float& diameter, int r, int g, int b, int a, float duration) = 0;
+	void AddCapsuleOverlay(const Vector& mins, const Vector& maxs, float& pillradius, int r, int g, int b, int a, float duration)
+	{
+		VT::VFunc<void(__thiscall*)(void*, const Vector&, const Vector&, float&, int, int, int, int, float)>(this, 23)(this, mins, maxs, pillradius, r, g, b, a, duration);
+	}
 }; extern IVDebugOverlay* g_pDebugOverlay;

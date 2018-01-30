@@ -31,4 +31,6 @@ public:
 	int DrawModel(int flags, uint8_t alpha);
 	void* GetClientRenderable();
 	int GetTickBase();
+	int GetMoney();
+	MoveType_t GetMoveType();
 };

@@ -4,32 +4,57 @@ void CESP::Start() {
 		auto pLocal = g_pEntityList->GetClientEntity(g_pEngine->GetLocalPlayer());
 		auto pEntity = g_pEntityList->GetClientEntity(i);
 		if (!pEntity) continue;
+		if (pEntity == pLocal)continue;
 		if (pEntity->GetDormant()) continue;
 		if (pEntity->GetHealth() < 1) continue;
-		if (pEntity == pLocal)continue;
 		RECT EspRect;
 		player_info_t info;
 		EspRect = GetBox(pEntity);
-		if (EspRect.left == 0 && EspRect.right == 0 && EspRect.top == 0 && EspRect.bottom == 0) continue; // xD
 		Color BoxClr = pEntity->GetTeam() == pLocal->GetTeam() ? Color(0, 255, 0, 255) : Color(255, 0, 0, 255);
-		Draw->OutlinedRect(EspRect.left, EspRect.top, EspRect.right - EspRect.left, EspRect.bottom - EspRect.top, BoxClr);
-		Draw->OutlinedRect(EspRect.left - 1, EspRect.top - 1, EspRect.right - EspRect.left + 2, EspRect.bottom - EspRect.top + 2, Color(0, 0, 0, 255));
-		Draw->OutlinedRect(EspRect.left + 1, EspRect.top + 1, EspRect.right - EspRect.left - 2, EspRect.bottom - EspRect.top - 2, Color(0, 0, 0, 255));
 		g_pEngine->GetPlayerInfo(pEntity->GetIndex(), &info);
-		//		if (g_Settings.visuals.espname) {
-		std::string name = info.szName;
-		Draw->String(F_ESP, true, (EspRect.left + EspRect.right) / 2, EspRect.top - 12, Color(255, 255, 255, 255), name.c_str());
-		//		}
-		//		if (g_Settings.visuals.health) {
-		Draw->StringRight(true, F_ESP, EspRect.left - 7, EspRect.top, Color(255, 255, 255, 255), "HP:%d", pEntity->GetHealth());
-		auto hp = pEntity->GetHealth();
-		auto green = int(hp * 2.55f);
-		auto red = 255 - green;
-		auto height = ((EspRect.bottom - EspRect.top) * hp) / 100;
-		Draw->FilledRect(EspRect.left - 5, EspRect.top - 1, 3, EspRect.bottom - EspRect.top + 2, Color(0, 0, 0, 255));
-		Draw->FilledRect(EspRect.left - 4, EspRect.top, 1, height, Color(red, green, 0, 255));
-	//}
+		if (g_Settings.visuals.esp)PlayerBox(pEntity, EspRect, BoxClr);
+		if (g_Settings.visuals.espname)PlayerName(pEntity, EspRect, info);
+		if (g_Settings.visuals.espweapon)PlayerWeapon(pEntity, EspRect);
+		if (g_Settings.visuals.distance) PlayerDistance(pEntity, EspRect, pLocal);
+		if (g_Settings.visuals.health) PlayerHealth(pEntity, EspRect);
+		if (g_Settings.visuals.money) PlayerMoney(pEntity, EspRect);
 	}
+}
+void CESP::PlayerBox(C_BaseEntity* pEntity, RECT EspRect, Color BoxClr){	
+	Draw->OutlinedRect(EspRect.left, EspRect.top, EspRect.right - EspRect.left, EspRect.bottom - EspRect.top, BoxClr);
+	Draw->OutlinedRect(EspRect.left - 1, EspRect.top - 1, EspRect.right - EspRect.left + 2, EspRect.bottom - EspRect.top + 2, Color(0, 0, 0, 255));
+	Draw->OutlinedRect(EspRect.left + 1, EspRect.top + 1, EspRect.right - EspRect.left - 2, EspRect.bottom - EspRect.top - 2, Color(0, 0, 0, 255));
+}
+void CESP::PlayerHealth(C_BaseEntity* pEntity, RECT EspRect) {
+	Draw->StringRight(true, F_ESP, EspRect.left - 7, EspRect.top - 2, Color(255, 255, 255, 255), "HP:%d", pEntity->GetHealth());
+	auto hp = pEntity->GetHealth();
+	auto green = int(hp * 2.55f);
+	auto red = 255 - green;
+	auto height = ((EspRect.bottom - EspRect.top) * hp) / 100;
+	Draw->FilledRect(EspRect.left - 5, EspRect.top - 1, 3, EspRect.bottom - EspRect.top + 2, Color(0, 0, 0, 255));
+	Draw->FilledRect(EspRect.left - 4, EspRect.bottom - height, 1, height, Color(red, green, 0, 255));
+}
+void CESP::PlayerWeapon(C_BaseEntity* pEntity, RECT EspRect) {
+	auto weapon = pEntity->GetActiveWeapon();
+	auto weapondata = weapon->GetCSWeaponData();
+	Draw->String(F_ESP, true, (EspRect.left + EspRect.right) / 2, EspRect.bottom + 1, Color(255, 255, 255, 255), "%s[%d/%d]", weapon->GetWeaponName().c_str(), weapon->Clip1(), weapondata->iMaxClip1);
+
+}
+void CESP::PlayerMoney(C_BaseEntity* pEntity, RECT EspRect) {
+	auto money = 100;
+	 money = pEntity->GetMoney();
+	Draw->String(F_ESP, false, EspRect.right + 3, EspRect.top + 10, Color(0, 222, 0, 255), "%d$", money);
+}
+void CESP::PlayerName(C_BaseEntity* pEntity, RECT EspRect,player_info_t info) {
+	std::string name = info.szName;
+	Draw->String(F_ESP, true, (EspRect.left + EspRect.right) / 2, EspRect.top - 12, Color(255, 255, 255, 255), name.c_str());
+
+}
+void CESP::PlayerDistance(C_BaseEntity* pEntity, RECT EspRect, C_BaseEntity* pLocal) {
+	auto a = pLocal->GetOrigin();
+	auto b = pEntity->GetOrigin();
+	int distance = sqrt(pow(a.x - b.x, 2) + pow(a.y - b.y, 2) + pow(a.z - b.z, 2)) * 0.0254f;
+	Draw->String(F_ESP, false, EspRect.right + 3, EspRect.top, Color(255, 255, 255, 255), "%dM", distance);
 }
 bool CESP::WorldToScreen(const Vector& in, Vector& out) {
 	static ptrdiff_t ptrViewMatrix;

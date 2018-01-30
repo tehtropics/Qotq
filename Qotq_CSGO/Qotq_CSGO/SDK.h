@@ -159,6 +159,8 @@ extern bool menuOpen;
 //features includes
 #include "Glow.h"
 #include "ESP.h"
+#include "Movement.h"
+#include "Chamss.h"
 
 
 

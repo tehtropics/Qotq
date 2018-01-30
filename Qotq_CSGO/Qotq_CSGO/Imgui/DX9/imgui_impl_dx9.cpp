@@ -6,11 +6,11 @@
 // If you are new to ImGui, see examples/README.txt and documentation at the top of imgui.cpp.
 // https://github.com/ocornut/imgui
 
-#include "../imgui.h"
+#include "..\imgui.h"
 #include "imgui_impl_dx9.h"
 
 // DirectX
-#include <d3d9.h>
+#include <d3dx9.h>
 #define DIRECTINPUT_VERSION 0x0800
 #include <dinput.h>
 
@@ -348,14 +348,6 @@ void ImGui_ImplDX9_NewFrame()
     // io.MousePos : filled by WM_MOUSEMOVE events
     // io.MouseDown : filled by WM_*BUTTON* events
     // io.MouseWheel : filled by WM_MOUSEWHEEL events
-
-    // Set OS mouse position if requested last frame by io.WantMoveMouse flag (used when io.NavMovesTrue is enabled by user and using directional navigation)
-    if (io.WantMoveMouse)
-    {
-        POINT pos = { (int)io.MousePos.x, (int)io.MousePos.y };
-        ClientToScreen(g_hWnd, &pos);
-        SetCursorPos(pos.x, pos.y);
-    }
 
     // Hide OS mouse cursor if ImGui is drawing it
     if (io.MouseDrawCursor)
