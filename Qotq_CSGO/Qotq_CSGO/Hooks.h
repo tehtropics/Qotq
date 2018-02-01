@@ -13,7 +13,7 @@ extern PaintTraverse oPaintTraverse;
 using OverrideView = int(__stdcall*)(CViewSetup*);
 extern OverrideView oOverrideView;
 
-using SceneEnd = void(__fastcall*)(void*, void*);
+using SceneEnd = void(__fastcall*)(void*);
 extern SceneEnd oSceneEnd;
 
 using FrameStageNotify = void(__stdcall*)(ClientFrameStage_t);
@@ -44,7 +44,7 @@ namespace Hooks {
 	extern void __fastcall PaintTraverseHook(void *thisptr, void * _EDX,vgui::VPANEL panel, bool forceRepaint, bool allowForce);
 	extern void __stdcall OverrideViewHook(CViewSetup* pSetup);
 	extern void __stdcall FrameStageNotifyHook(ClientFrameStage_t stage);
-	extern void __fastcall SceneEndHook(void* thisptr, void* edx);
+	extern void __fastcall SceneEndHook(void* thisptr);
 	extern bool __fastcall WriteUsercmdDeltaToBufferHook(IBaseClientDLL* this0, void * _EDX, int nSlot, void* buf, int from, int to, bool isNewCmd);
 	extern void __stdcall PlaySoundHook(const char *folderIme);
 	extern LRESULT __stdcall WndProcHook(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
