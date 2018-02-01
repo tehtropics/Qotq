@@ -8,9 +8,8 @@ void CChamss::Start() {
 		if (pEntity->GetDormant()) continue;
 		if (pEntity->GetHealth() < 1) continue;
 		IMaterial *mat = g_pMatSystem->FindMaterial("debug/debugdrawflat", TEXTURE_GROUP_MODEL);
+		g_pRenderView->SetColorModulation(197, 255, 0);
 		g_pMdlRender->ForcedMaterialOverride(mat);
-		mat->ColorModulate(145,255,0);
-		mat->AlphaModulate(255);
 		pEntity->DrawModel(0x1/*STUDIO_RENDER*/, 255);
 		g_pMdlRender->ForcedMaterialOverride(nullptr);
 	}

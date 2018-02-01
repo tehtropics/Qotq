@@ -197,10 +197,10 @@ C_BaseWeapon* C_BaseEntity::GetActiveWeapon()
 {
 	return (C_BaseWeapon*)g_pEntityList->GetClientEntityFromHandle((CBaseHandle)hActiveWeapon());
 }
+MoveType_t C_BaseEntity::GetMoveType() {
+	return *reinterpret_cast<MoveType_t*>((uintptr_t)this + 0x258);
+}
 int C_BaseEntity::GetMoney()
 {
 	return *reinterpret_cast<int*>((uintptr_t)this + NetVars.m_iAccountID);
-}
-MoveType_t C_BaseEntity::GetMoveType() {
-	return *reinterpret_cast<MoveType_t*>((uintptr_t)this + 0x258);
 }

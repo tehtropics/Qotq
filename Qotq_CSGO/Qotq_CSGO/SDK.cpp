@@ -181,7 +181,7 @@ void InstallQotq(void)
 	g_Offsets.NetVars->GetOffset(("DT_BasePlayer"), ("m_nTickBase"), &NetVars.m_nTickBase);
 	g_Offsets.NetVars->GetOffset(("DT_BasePlayer"), ("m_hObserverTarget"), &NetVars.m_hObserverTarget);
 	g_Offsets.NetVars->GetOffset(("DT_BasePlayer"), ("m_flSimulationTime"), &NetVars.m_flSimulationTime);
-	g_Offsets.NetVars->GetOffset(("DT_BaseAttributableItem"), ("m_iAccountID"), &NetVars.m_iAccountID);
+	g_Offsets.NetVars->GetOffset(("DT_CSPlayer"), ("m_iAccount"), &NetVars.m_iAccountID);
 	g_Offsets.NetVars->GetOffset(("DT_BaseAttributableItem"), ("m_iItemDefinitionIndex"), &NetVars.m_iItemDefinitionIndex);
 	g_Offsets.NetVars->GetOffset(("DT_BaseAttributableItem"), ("m_iItemIDHigh"), &NetVars.m_iItemIDHigh);
 	g_Offsets.NetVars->GetOffset(("DT_BaseAttributableItem"), ("m_iEntityQuality"), &NetVars.m_iEntityQuality);

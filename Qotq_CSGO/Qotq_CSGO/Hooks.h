@@ -13,7 +13,7 @@ extern PaintTraverse oPaintTraverse;
 using OverrideView = int(__stdcall*)(CViewSetup*);
 extern OverrideView oOverrideView;
 
-using SceneEnd = void(__thiscall*)(void*);
+using SceneEnd = void(__fastcall*)(void*, void*);
 extern SceneEnd oSceneEnd;
 
 using FrameStageNotify = void(__stdcall*)(ClientFrameStage_t);

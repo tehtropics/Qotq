@@ -58,7 +58,7 @@ bool __stdcall Hooks::CreateMoveHook(float flInputSampleTime, CUserCmd* cmd) {
 }
 
 int  __fastcall Hooks::DoPostScreenEffectsHook(void *thisptr, void * _EDX,int a1) {
-	if(g_pEngine->GetLocalPlayer()) g_pGlow->Start();
+	if(g_pEngine->GetLocalPlayer() && g_Settings.visuals.glow) g_pGlow->Start();
 	return oDoPostScreenEffects(thisptr,a1);
 }
 void __stdcall Hooks::OverrideViewHook(CViewSetup* pSetup) {
@@ -72,8 +72,8 @@ void __stdcall Hooks::FrameStageNotifyHook(ClientFrameStage_t stage) {
  }
 
 void __fastcall Hooks::SceneEndHook(void* thisptr, void* edx) {
-	return oSceneEnd(thisptr);
-	if (g_Settings.visuals.chams) g_pChams->Start();
+    oSceneEnd(thisptr, edx);
+	if(g_Settings.visuals.chams) g_pChams->Start(); 
  }
 bool __fastcall Hooks::WriteUsercmdDeltaToBufferHook(IBaseClientDLL* this0, void * _EDX, int nSlot, void* buf, int from, int to, bool isNewCmd) {
 	return true;

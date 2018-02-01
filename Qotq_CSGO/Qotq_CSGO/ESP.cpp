@@ -41,8 +41,7 @@ void CESP::PlayerWeapon(C_BaseEntity* pEntity, RECT EspRect) {
 
 }
 void CESP::PlayerMoney(C_BaseEntity* pEntity, RECT EspRect) {
-	auto money = 100;
-	 money = pEntity->GetMoney();
+	auto money = pEntity->GetMoney();
 	Draw->String(F_ESP, false, EspRect.right + 3, EspRect.top + 10, Color(0, 222, 0, 255), "%d$", money);
 }
 void CESP::PlayerName(C_BaseEntity* pEntity, RECT EspRect,player_info_t info) {
