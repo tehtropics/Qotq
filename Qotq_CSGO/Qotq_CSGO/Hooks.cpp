@@ -71,8 +71,8 @@ void __stdcall Hooks::FrameStageNotifyHook(ClientFrameStage_t stage) {
 
  }
 
-void __fastcall Hooks::SceneEndHook(void* thisptr, void* edx) {
-    oSceneEnd(thisptr, edx);
+void __fastcall Hooks::SceneEndHook(void* thisptr) {
+    oSceneEnd(thisptr);
 	if(g_Settings.visuals.chams) g_pChams->Start(); 
  }
 bool __fastcall Hooks::WriteUsercmdDeltaToBufferHook(IBaseClientDLL* this0, void * _EDX, int nSlot, void* buf, int from, int to, bool isNewCmd) {
