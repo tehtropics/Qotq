@@ -10,6 +10,7 @@ void CESP::Start() {
 		RECT EspRect;
 		player_info_t info;
 		EspRect = GetBox(pEntity);
+		if (IsRectEmpty(&EspRect)) continue;
 		Color BoxClr = pEntity->GetTeam() == pLocal->GetTeam() ? Color(0, 255, 0, 255) : Color(255, 0, 0, 255);
 		g_pEngine->GetPlayerInfo(pEntity->GetIndex(), &info);
 		if (g_Settings.visuals.esp)PlayerBox(pEntity, EspRect, BoxClr);
