@@ -7,7 +7,7 @@ CCSWeaponInfo* C_BaseWeapon::GetCSWeaponData()
 {
 	if (!this) return nullptr;
 	typedef CCSWeaponInfo*(__thiscall* OriginalFn)(void*);
-	return VT::VFunc<OriginalFn>(this, 447)(this);
+	return VT::VFunc<OriginalFn>(this, 445)(this);
 }
 int C_BaseWeapon::GetItemDefinitionIndex() {
 	return *reinterpret_cast<int*>((uintptr_t)this + NetVars.m_iItemDefinitionIndex);
